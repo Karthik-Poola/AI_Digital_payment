@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexPay – Dashboard</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">🏦</div>
+      <div>
+        <span class="logo-name">ApexPay</span>
+        <span class="logo-sub">Secure AI Finance</span>
+      </div>
+    </div>
+    <nav class="nav-section">
+      <a class="nav-item active" href="dashboard.html"><span class="nav-icon">⊞</span> Dashboard</a>
+      <a class="nav-item" href="transactions.html"><span class="nav-icon">📋</span> Transactions</a>
+      <a class="nav-item" href="transfer.html"><span class="nav-icon">↗</span> Transfer</a>
+      <a class="nav-item" href="insights.html"><span class="nav-icon">📈</span> Insights</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="nav-item" href="#"><span class="nav-icon">⚙️</span> Settings</a>
+      <a class="nav-item" href="#"><span class="nav-icon">💬</span> Support</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div></div>
+      <div class="topbar-right">
+        <div class="icon-btn" id="bellBtn">🔔<span class="notif-dot"></span></div>
+        <div class="icon-btn">❓</div>
+        <div class="avatar">A</div>
+      </div>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div>
+        <div class="page-title">Good morning, Alex.</div>
+        <div class="page-sub">Here is your financial overview for today.</div>
+      </div>
+      <button class="btn btn-primary" id="addMoneyBtn">+ Add Money</button>
+    </div>
+
+    <!-- ROW 1: Balance + Chart -->
+    <div class="grid-2">
+
+      <!-- Balance -->
+      <div class="card balance-card">
+        <div class="balance-meta">
+          <div class="balance-label">⊞ Total Balance <span class="badge-up">+2.4%</span></div>
+        </div>
+        <div class="balance-amount">
+          <sup>$</sup><span id="balanceNum">0</span><span class="cents">.00</span>
+        </div>
+        <div class="balance-actions">
+          <button class="bal-btn primary" id="sendBtn">▶ Send</button>
+          <button class="bal-btn" id="requestBtn">✓ Request</button>
+        </div>
+      </div>
+
+      <!-- Chart -->
+      <div class="card">
+        <div class="chart-head">
+          <div class="chart-title">Cash Flow (Last 7 Days)</div>
+          <div class="chart-tabs">
+            <button class="chart-tab" data-tab="week">Week</button>
+            <button class="chart-tab active" data-tab="month">Month</button>
+          </div>
+        </div>
+        <div class="chart-bars" id="chartBars"></div>
+        <div class="chart-days" id="chartDays"></div>
+      </div>
+    </div>
+
+    <!-- ROW 2: AI Snippet + Quick Transfer -->
+    <div class="grid-2">
+
+      <!-- AI Snippet -->
+      <div class="card ai-card">
+        <div class="ai-icon">✨</div>
+        <div>
+          <div class="ai-title">AI Health Snippet</div>
+          <div class="ai-text">Your spending on <strong>Dining</strong> has decreased by 15% this month. Keeping this trend could save you an estimated <span class="hl">$240</span> by month's end.</div>
+          <a class="ai-link" id="aiLink" href="insights.html">View Full Report →</a>
+        </div>
+      </div>
+
+      <!-- Quick Transfer -->
+      <div class="card">
+        <div class="qt-head">
+          <div class="qt-title">Quick Transfer</div>
+          <span class="see-all" onclick="window.location.href='transfer.html'">See All</span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-item" onclick="window.location.href='transfer.html'">
+            <div class="c-add">+</div>
+            <div class="c-name">New</div>
+          </div>
+          <div class="contact-item" data-name="Sarah">
+            <div class="c-avatar" style="background:#8b5cf6">S</div>
+            <div class="c-name">Sarah</div>
+          </div>
+          <div class="contact-item" data-name="Michael">
+            <div class="c-avatar" style="background:#0891b2">M</div>
+            <div class="c-name">Michael</div>
+          </div>
+          <div class="contact-item" data-name="Emma">
+            <div class="c-avatar" style="background:#059669">EJ</div>
+            <div class="c-name">Emma</div>
+          </div>
+          <div class="contact-item" data-name="David">
+            <div class="c-avatar" style="background:#374151">D</div>
+            <div class="c-name">David</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECENT ACTIVITY -->
+    <div class="card mt-20">
+      <div class="activity-head">
+        <div class="activity-title">Recent Activity</div>
+        <button class="filter-icon-btn">⊞</button>
+      </div>
+      <div>
+        <div class="txn-row">
+          <div class="txn-icon" style="background:#f0fdf4">🛒</div>
+          <div class="txn-info">
+            <div class="txn-name">Whole Foods Market</div>
+            <div class="txn-meta">Today, 2:45 PM · Groceries</div>
+          </div>
+          <div class="txn-amount neg">-$142.50</div>
+        </div>
+        <div class="txn-row">
+          <div class="txn-icon" style="background:#eff6ff">✈️</div>
+          <div class="txn-info">
+            <div class="txn-name">Delta Airlines</div>
+            <div class="txn-meta">Yesterday, 9:20 AM · Travel</div>
+          </div>
+          <div class="txn-amount neg">-$450.00</div>
+        </div>
+        <div class="txn-row">
+          <div class="txn-icon" style="background:#f0fdf4">⬇️</div>
+          <div class="txn-info">
+            <div class="txn-name">Stripe Inc. Payout</div>
+            <div class="txn-meta">Oct 24, 2023 · Income</div>
+          </div>
+          <div class="txn-amount pos">+$3,250.00</div>
+        </div>
+        <div class="txn-row">
+          <div class="txn-icon" style="background:#fef2f2">📺</div>
+          <div class="txn-info">
+            <div class="txn-name">Netflix Subscription</div>
+            <div class="txn-meta">Oct 22, 2023 · Entertainment</div>
+          </div>
+          <div class="txn-amount neg">-$15.99</div>
+        </div>
+        <div class="txn-row">
+          <div class="txn-icon" style="background:#eff6ff">💼</div>
+          <div class="txn-info">
+            <div class="txn-name">TechNova Solutions</div>
+            <div class="txn-meta">Oct 24, 2023 · Software</div>
+          </div>
+          <div class="txn-amount neg">-$1,250.00</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/global.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

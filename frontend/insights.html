@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexPay – Financial Insights</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/insights.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">🏦</div>
+      <div>
+        <span class="logo-name">ApexPay</span>
+        <span class="logo-sub">Secure AI Finance</span>
+      </div>
+    </div>
+    <nav class="nav-section">
+      <a class="nav-item" href="dashboard.html"><span class="nav-icon">⊞</span> Dashboard</a>
+      <a class="nav-item" href="transactions.html"><span class="nav-icon">📋</span> Transactions</a>
+      <a class="nav-item" href="transfer.html"><span class="nav-icon">↗</span> Transfer</a>
+      <a class="nav-item active" href="insights.html"><span class="nav-icon">📈</span> Insights</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="nav-item" href="#"><span class="nav-icon">⚙️</span> Settings</a>
+      <a class="nav-item" href="#"><span class="nav-icon">💬</span> Support</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-search">
+        <span>🔍</span>
+        <input type="text" placeholder="Search transactions...">
+      </div>
+      <div class="topbar-right">
+        <div class="icon-btn" id="bellBtn">🔔<span class="notif-dot"></span></div>
+        <div class="icon-btn">❓</div>
+        <div class="avatar">A</div>
+      </div>
+    </div>
+
+    <!-- PAGE TITLE -->
+    <div class="insights-heading">Financial Insights</div>
+    <div class="insights-sub">Powered by Apex AI</div>
+
+    <!-- LAYOUT -->
+    <div class="insights-layout">
+
+      <!-- LEFT COLUMN -->
+      <div class="insights-left">
+
+        <!-- AI Analysis Card -->
+        <div class="ai-analysis-card">
+          <div class="ai-analysis-head">
+            <div class="ai-analysis-icon">✨</div>
+            <div class="ai-analysis-title">Monthly AI Analysis</div>
+            <span class="new-badge">New Insight</span>
+          </div>
+          <div class="ai-analysis-body" id="aiBody">
+            Your spending on <strong>Dining Out</strong> increased by <span class="neg">15% ($240)</span> this month compared to your 3-month average. However, you successfully reduced your <strong>Transportation</strong> costs by <span class="pos">8% ($45)</span>. Consider reviewing your weekend restaurant expenses to stay on track with your overall savings goal.
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+            <button class="ai-review-btn" id="reviewDiningBtn">Review Dining Transactions →</button>
+            <button class="ai-review-btn" id="regenerateBtn" style="border-color:var(--gray-300);color:var(--gray-600);">🔄 Refresh Insight</button>
+          </div>
+        </div>
+
+        <!-- Category Breakdown -->
+        <div class="card">
+          <div class="breakdown-head">
+            <div class="breakdown-title">Category Breakdown</div>
+            <span class="see-all" id="viewAllBtn">View All</span>
+          </div>
+          <div class="donut-layout">
+            <div class="donut-wrap" id="donutChart">
+              <div class="donut-inner">
+                <div class="donut-label">Total Spend</div>
+                <div class="donut-val">$4,250</div>
+              </div>
+            </div>
+            <div class="legend">
+              <div class="legend-row">
+                <div class="legend-left"><div class="legend-dot" style="background:#2563eb"></div><span class="legend-name">Housing</span></div>
+                <span class="legend-pct">45%</span>
+              </div>
+              <div class="legend-row">
+                <div class="legend-left"><div class="legend-dot" style="background:#1e293b"></div><span class="legend-name">Food & Dining</span></div>
+                <span class="legend-pct">30%</span>
+              </div>
+              <div class="legend-row">
+                <div class="legend-left"><div class="legend-dot" style="background:#d97706"></div><span class="legend-name">Transport</span></div>
+                <span class="legend-pct">15%</span>
+              </div>
+              <div class="legend-row">
+                <div class="legend-left"><div class="legend-dot" style="background:#e2e8f0"></div><span class="legend-name">Other</span></div>
+                <span class="legend-pct">10%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="insights-right">
+
+        <!-- Active Goal -->
+        <div class="card">
+          <div class="goal-head">
+            <div class="goal-head-icon">🐖</div>
+            <div class="goal-head-title">Active Goal</div>
+          </div>
+          <div class="goal-name">Emergency Fund</div>
+          <div class="goal-target-txt">Target: Dec 2024</div>
+          <div class="goal-amount">$5,200</div>
+          <div class="goal-of-txt">of $10,000</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width:0%"></div>
+          </div>
+          <div class="goal-status">↗ On track to meet your goal!</div>
+          <button class="btn btn-outline btn-sm" id="addToGoalBtn" style="margin-top:14px;width:100%;">+ Add to Goal</button>
+        </div>
+
+        <!-- Smart Tips -->
+        <div class="card">
+          <div class="tips-head">
+            <div class="tips-head-icon">💡</div>
+            <div class="tips-head-title">Smart Tips</div>
+          </div>
+
+          <div class="tip-item">
+            <div class="tip-bullet yellow">⚡</div>
+            <div>
+              <div class="tip-content-title">Subscription Alert</div>
+              <div class="tip-content-text">You have 3 unused streaming services costing $42/mo. Review them?</div>
+            </div>
+          </div>
+
+          <div class="tip-item">
+            <div class="tip-bullet blue">🛒</div>
+            <div>
+              <div class="tip-content-title">Grocery Timing</div>
+              <div class="tip-content-text">Shopping on Sundays instead of Wednesdays could save you an average of 5% based on historical data.</div>
+            </div>
+          </div>
+
+          <div class="tip-item">
+            <div class="tip-bullet green">🏦</div>
+            <div>
+              <div class="tip-content-title">Auto-Save Opportunity</div>
+              <div class="tip-content-text">Your checking balance is higher than usual. Sweep $200 to High-Yield Savings?</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/global.js"></script>
+<script src="js/insights.js"></script>
+</body>
+</html>

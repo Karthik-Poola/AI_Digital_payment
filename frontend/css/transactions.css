@@ -1,0 +1,120 @@
+/* =========================================================
+   ApexPay - css/transactions.css
+   ========================================================= */
+
+.page-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+.page-heading { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+.page-subtitle { font-size: 14px; color: var(--gray-700); }
+
+.export-btn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: var(--radius-md);
+  font-size: 14px; font-weight: 600;
+  background: #fff; border: 1px solid var(--gray-400); color: var(--gray-900);
+  cursor: pointer; transition: background .15s;
+}
+.export-btn:hover { background: var(--gray-100); }
+.export-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ===================== FILTER BAR ===================== */
+.filter-bar {
+  display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  background: #fff; border: 1px solid rgba(194,198,214,0.4);
+  border-radius: var(--radius-md); padding: 14px 16px; margin-bottom: 18px;
+}
+.search-box {
+  display: flex; align-items: center; gap: 10px;
+  flex: 1; min-width: 220px; color: var(--gray-600);
+}
+.search-box input {
+  border: none; outline: none; background: transparent;
+  font-size: 14px; color: var(--gray-900); width: 100%;
+}
+.filter-dropdown {
+  padding: 10px 14px; border-radius: var(--radius-sm);
+  border: 1px solid var(--gray-400); font-size: 14px;
+  color: var(--gray-700); background: #fff; cursor: pointer;
+}
+
+/* ===================== TABLE ===================== */
+.txn-table {
+  background: #fff; border-radius: var(--radius-lg);
+  border: 1px solid rgba(194,198,214,0.3);
+  box-shadow: var(--shadow-card);
+  padding: 8px 16px;
+}
+.table-head {
+  display: grid; grid-template-columns: 2fr 1.4fr 1.6fr 1fr;
+  gap: 12px; padding: 14px 12px;
+  border-bottom: 1px solid rgba(194,198,214,0.3);
+}
+.th {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--gray-600); text-transform: uppercase;
+}
+.th.right { text-align: right; }
+
+.t-row {
+  display: grid; grid-template-columns: 2fr 1.4fr 1.6fr 1fr;
+  gap: 12px; padding: 16px 12px;
+  border-bottom: 1px solid rgba(194,198,214,0.2);
+  align-items: center; font-size: 14px;
+}
+.t-row:last-child { border-bottom: none; }
+.t-row:hover { background: #fafbff; }
+
+.t-cell.recip { display: flex; align-items: center; gap: 14px; }
+.recip-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--info-bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.recip-name { font-weight: 700; }
+.recip-date { font-size: 12px; color: var(--gray-600); margin-top: 2px; }
+.recip-date .date-flag { color: var(--danger); font-weight: 700; }
+
+.cat-pill {
+  font-size: 12px; font-weight: 600; color: var(--gray-700);
+  background: var(--gray-200); padding: 5px 12px; border-radius: 8px;
+  display: inline-block;
+}
+
+.fraud-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: var(--radius-full);
+  font-size: 12px; font-weight: 600;
+}
+.fraud-success { background: var(--success-bg); color: #065f46; }
+.fraud-warning { background: var(--warning-bg); color: #92400e; }
+.fraud-danger { background: var(--danger-bg); color: #991b1b; }
+.fraud-info { background: var(--info-bg); color: var(--primary); }
+
+.t-cell.amount { font-weight: 700; font-size: 15px; }
+.t-cell.amount.right { text-align: right; }
+.t-cell.amount.pos { color: var(--success); }
+.t-cell.amount.neg { color: var(--gray-900); }
+.t-cell.amount.strike { text-decoration: line-through; }
+.t-cell.amount.muted { color: var(--gray-600); }
+
+/* ===================== TABLE FOOTER / PAGINATION ===================== */
+.table-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 12px; flex-wrap: wrap; gap: 12px;
+}
+.table-info { font-size: 13px; color: var(--gray-600); }
+.pager { display: flex; gap: 6px; }
+.pager-btn {
+  width: 34px; height: 34px; border-radius: 8px;
+  border: 1px solid var(--gray-400); background: #fff;
+  font-size: 13px; font-weight: 600; color: var(--gray-700);
+  cursor: pointer;
+}
+.pager-btn:hover:not(:disabled) { background: var(--gray-100); }
+.pager-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.pager-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+@media (max-width: 800px) {
+  .table-head, .t-row { grid-template-columns: 2fr 1fr 1fr; }
+  .table-head .th:nth-child(3), .t-row .t-cell:nth-child(3) { display: none; }
+}

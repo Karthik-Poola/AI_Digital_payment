@@ -1,0 +1,156 @@
+/* =========================================================
+   ApexPay - css/transfer.css
+   ========================================================= */
+
+.transfer-center { display: flex; justify-content: center; padding-top: 8px; }
+.transfer-card {
+  width: 100%; max-width: 640px;
+  background: #fff; border-radius: var(--radius-lg);
+  border: 1px solid rgba(194,198,214,0.3);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+/* ===================== HEADER ===================== */
+.tf-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  padding: 26px 28px; border-bottom: 1px solid rgba(194,198,214,0.3);
+}
+.tf-title { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.tf-sub { font-size: 13px; color: var(--gray-600); }
+.tf-lock {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--info-bg); color: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+
+/* ===================== STEPPER ===================== */
+.stepper { display: flex; align-items: center; justify-content: center; padding: 28px 28px 0; }
+.step { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.step-num {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+  background: var(--gray-300); color: var(--gray-600);
+  transition: all .2s;
+}
+.step-num.done, .step-num.active { background: var(--primary); color: #fff; }
+.step-label { font-size: 12px; font-weight: 600; color: var(--gray-600); }
+.step-label.active, .step-label.done { color: var(--primary); }
+.step-line { flex: 1; height: 2px; background: var(--gray-300); margin: 0 8px; max-width: 110px; align-self: center; margin-top: -20px; }
+
+/* ===================== STEP PANELS ===================== */
+.step-panel { padding: 28px; }
+.tf-label { font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+
+.tf-input-wrap { position: relative; margin-bottom: 4px; }
+.tf-input-icon {
+  position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+  color: var(--gray-600); font-size: 16px;
+}
+.tf-input {
+  width: 100%; padding: 14px 16px 14px 44px;
+  border: 1px solid var(--gray-400); border-radius: var(--radius-md);
+  font-size: 14px; outline: none; background: #fafbff;
+  transition: border-color .15s, box-shadow .15s;
+}
+.tf-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0,88,190,0.12); }
+
+.field-error { color: var(--danger); font-size: 12px; margin-top: 6px; min-height: 16px; }
+
+/* ===================== RECENT CONTACTS ===================== */
+.contacts-label { font-size: 13px; font-weight: 700; color: var(--gray-700); margin: 22px 0 12px; }
+.contacts-row { display: flex; gap: 22px; flex-wrap: wrap; }
+.contact-chip {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  cursor: pointer; padding: 12px; border-radius: 14px;
+  border: 2px solid transparent; transition: all .15s;
+}
+.contact-chip:hover, .contact-chip.selected { background: var(--gray-100); border-color: var(--primary); }
+.chip-av {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 16px; color: #fff;
+}
+.chip-name { font-size: 12px; font-weight: 600; color: var(--gray-700); }
+
+/* ===================== AMOUNT STEP ===================== */
+.quick-amounts { display: flex; gap: 10px; margin: 14px 0; flex-wrap: wrap; }
+.quick-amount {
+  padding: 8px 18px; border-radius: var(--radius-md);
+  border: 1px solid var(--gray-400); background: #fff;
+  font-size: 13px; font-weight: 600; color: var(--gray-700); cursor: pointer;
+}
+.quick-amount:hover { background: var(--gray-100); border-color: var(--primary); color: var(--primary); }
+
+.amount-preview {
+  background: var(--gray-100); border-radius: var(--radius-md);
+  padding: 18px; text-align: center; margin-top: 8px;
+}
+.amount-preview-label { font-size: 12px; color: var(--gray-600); margin-bottom: 4px; }
+.amount-preview-value { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; }
+
+/* ===================== FRAUD CHECK BAR ===================== */
+.fraud-check-bar {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--gray-100); border-radius: var(--radius-md);
+  padding: 12px 16px; margin: 16px 0; font-size: 13px; font-weight: 600;
+  color: var(--gray-700);
+}
+.fraud-check-bar.ok { background: var(--success-bg); color: #065f46; }
+.fraud-check-bar.warn { background: var(--warning-bg); color: #92400e; }
+.fraud-check-bar.blocked { background: var(--danger-bg); color: #991b1b; }
+
+.fraud-spinner {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 2px solid var(--gray-300); border-top-color: var(--primary);
+  animation: spin .7s linear infinite; flex-shrink: 0;
+}
+.fraud-check-bar.ok .fraud-spinner,
+.fraud-check-bar.warn .fraud-spinner,
+.fraud-check-bar.blocked .fraud-spinner { display: none; }
+
+/* ===================== CONFIRM SUMMARY ===================== */
+.confirm-summary {
+  background: var(--gray-100); border-radius: var(--radius-md);
+  padding: 6px 18px; margin-bottom: 18px;
+}
+.summary-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 0; border-bottom: 1px solid rgba(194,198,214,0.3);
+  font-size: 14px;
+}
+.summary-row:last-child { border-bottom: none; }
+.summary-label { color: var(--gray-600); }
+.summary-value { font-weight: 700; }
+.summary-value.pos { color: var(--success); }
+
+/* ===================== ACTIONS ===================== */
+.tf-continue {
+  width: 100%; padding: 14px; border-radius: var(--radius-md);
+  background: var(--primary); color: #fff; border: none;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  margin-top: 10px; transition: background .15s;
+}
+.tf-continue:hover { background: var(--primary-light); }
+.tf-continue:disabled { background: var(--gray-400); cursor: not-allowed; }
+
+.tf-back {
+  width: 100%; padding: 12px; border-radius: var(--radius-md);
+  background: #fff; color: var(--gray-700); border: 1px solid var(--gray-400);
+  font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 10px;
+}
+.tf-back:hover { background: var(--gray-100); }
+
+.tf-secure-note {
+  text-align: center; font-size: 12px; color: var(--gray-600);
+  margin-top: 18px;
+}
+
+/* ===================== SUCCESS PANEL ===================== */
+.success-panel { padding: 40px 28px; }
+.success-icon { font-size: 56px; margin-bottom: 12px; }
+.success-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+.success-sub { font-size: 14px; color: var(--gray-600); margin-bottom: 28px; max-width: 360px; }
+.success-actions { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 320px; }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexPay – Sign In</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+<div class="auth-page">
+  <div class="auth-card">
+
+    <div class="auth-logo-block">
+      <div class="auth-logo-icon">🏦</div>
+      <h1>ApexPay</h1>
+      <span>Secure AI Finance Portal</span>
+    </div>
+
+    <form id="loginForm" autocomplete="on">
+
+      <div class="form-group">
+        <div class="form-row-between">
+          <label class="form-label" for="email">Email Address</label>
+        </div>
+        <div class="input-wrap">
+          <span class="input-icon">✉️</span>
+          <input class="form-input" type="email" id="email" name="email" placeholder="name@company.com" autocomplete="email">
+        </div>
+        <div class="field-error" id="emailErr"></div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-row-between">
+          <label class="form-label" for="password">Password</label>
+          <a class="form-link" href="#">Forgot Password?</a>
+        </div>
+        <div class="input-wrap">
+          <span class="input-icon">🔒</span>
+          <input class="form-input" type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password">
+          <span id="togglePass" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:16px;color:var(--gray-400);">👁️</span>
+        </div>
+        <div class="field-error" id="passErr"></div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" style="margin-top:8px;">Sign In →</button>
+    </form>
+
+    <div class="auth-divider">Or continue securely with</div>
+
+    <button class="btn-passkey" id="passkeyBtn">🔑 Passkey / Biometrics</button>
+
+    <div class="auth-footer">
+      Don't have an account? <a href="register.html">Request Access</a>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/global.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

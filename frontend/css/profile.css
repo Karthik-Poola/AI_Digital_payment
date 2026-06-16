@@ -1,0 +1,73 @@
+/* =========================================================
+   ApexPay - css/profile.css
+   ========================================================= */
+
+.profile-layout {
+  display: grid; grid-template-columns: 320px 1fr; gap: 18px;
+  align-items: start;
+}
+
+/* ===================== PROFILE SUMMARY ===================== */
+.profile-summary {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.profile-avatar {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: var(--info-bg); color: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px; font-weight: 700; margin-bottom: 16px;
+}
+.profile-name { font-size: 18px; font-weight: 700; margin-bottom: 2px; }
+.profile-role { font-size: 13px; color: var(--gray-600); margin-bottom: 4px; }
+.profile-email { font-size: 13px; color: var(--gray-600); margin-bottom: 20px; }
+
+.profile-balance-row {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding-top: 16px; border-top: 1px solid rgba(194,198,214,0.3);
+}
+.profile-balance-label { font-size: 13px; color: var(--gray-600); }
+.profile-balance-value { font-size: 16px; font-weight: 700; }
+
+/* ===================== FORMS ===================== */
+.profile-forms { display: flex; flex-direction: column; gap: 18px; }
+.profile-section-title { font-size: 16px; font-weight: 700; margin-bottom: 18px; }
+
+.save-status {
+  font-size: 13px; font-weight: 600; margin-left: 14px; color: var(--success);
+  opacity: 0; transition: opacity .2s;
+}
+.save-status.show { opacity: 1; }
+.save-status.error { color: var(--danger); }
+
+/* ===================== BIOMETRIC TOGGLE ===================== */
+.biometric-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 20px; margin-top: 8px;
+  border-top: 1px solid rgba(194,198,214,0.3);
+  gap: 16px;
+}
+.biometric-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.biometric-sub { font-size: 13px; color: var(--gray-600); }
+
+.switch { position: relative; display: inline-block; width: 46px; height: 26px; flex-shrink: 0; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.switch-slider {
+  position: absolute; cursor: pointer; inset: 0;
+  background-color: var(--gray-300);
+  border-radius: var(--radius-full); transition: .2s;
+}
+.switch-slider::before {
+  position: absolute; content: ""; height: 20px; width: 20px;
+  left: 3px; bottom: 3px; background-color: #fff;
+  border-radius: 50%; transition: .2s;
+}
+.switch input:checked + .switch-slider { background-color: var(--primary); }
+.switch input:checked + .switch-slider::before { transform: translateX(20px); }
+
+/* ===================== DANGER CARD ===================== */
+.danger-card { border-color: rgba(239,68,68,0.2); }
+.danger-desc { font-size: 13px; color: var(--gray-600); margin: 0 0 14px; }
+
+@media (max-width: 900px) {
+  .profile-layout { grid-template-columns: 1fr; }
+}

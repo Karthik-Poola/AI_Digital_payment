@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexPay – Transactions</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/transactions.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">🏦</div>
+      <div>
+        <span class="logo-name">ApexPay</span>
+        <span class="logo-sub">Secure AI Finance</span>
+      </div>
+    </div>
+    <nav class="nav-section">
+      <a class="nav-item" href="dashboard.html"><span class="nav-icon">⊞</span> Dashboard</a>
+      <a class="nav-item active" href="transactions.html"><span class="nav-icon">📋</span> Transactions</a>
+      <a class="nav-item" href="transfer.html"><span class="nav-icon">↗</span> Transfer</a>
+      <a class="nav-item" href="insights.html"><span class="nav-icon">📈</span> Insights</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="nav-item" href="#"><span class="nav-icon">⚙️</span> Settings</a>
+      <a class="nav-item" href="#"><span class="nav-icon">💬</span> Support</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-search">
+        <span>🔍</span>
+        <input type="text" placeholder="Search transactions...">
+      </div>
+      <div class="topbar-right">
+        <div class="icon-btn" id="bellBtn">🔔<span class="notif-dot"></span></div>
+        <div class="icon-btn">❓</div>
+        <div class="avatar">A</div>
+      </div>
+    </div>
+
+    <!-- PAGE TOP -->
+    <div class="page-top">
+      <div>
+        <div class="page-heading">Transaction History</div>
+        <div class="page-subtitle">Review your recent activity and AI fraud analysis.</div>
+      </div>
+      <button class="export-btn" id="exportBtn">⬇ Export CSV</button>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+      <div class="search-box">
+        <span>🔍</span>
+        <input type="text" id="txnSearch" placeholder="Search recipients or categories...">
+      </div>
+      <select class="filter-dropdown" id="dateFilter">
+        <option value="30">📅 Last 30 Days</option>
+        <option value="7">📅 Last 7 Days</option>
+        <option value="90">📅 Last 90 Days</option>
+        <option value="365">📅 This Year</option>
+      </select>
+      <select class="filter-dropdown" id="categoryFilter">
+        <option value="all">⊞ All Categories</option>
+        <option value="software">Software Subscriptions</option>
+        <option value="travel">Travel & Transit</option>
+        <option value="groceries">Groceries</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="income">Income</option>
+        <option value="digital">Digital Assets</option>
+      </select>
+    </div>
+
+    <!-- TABLE -->
+    <div class="txn-table">
+      <div class="table-head">
+        <div class="th">RECIPIENT / DATE</div>
+        <div class="th">CATEGORY</div>
+        <div class="th">AI FRAUD CHECK</div>
+        <div class="th right">AMOUNT</div>
+      </div>
+      <div id="tableBody"></div>
+      <div class="table-footer">
+        <div class="table-info" id="tableInfo">Loading...</div>
+        <div class="pager" id="pager"></div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/global.js"></script>
+<script src="js/transactions.js"></script>
+</body>
+</html>

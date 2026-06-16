@@ -1,0 +1,120 @@
+/* =========================================================
+   ApexPay - css/dashboard.css
+   ========================================================= */
+
+/* ===================== BALANCE CARD ===================== */
+.balance-card { display: flex; flex-direction: column; justify-content: space-between; }
+.balance-meta { margin-bottom: 14px; }
+.balance-label {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; font-weight: 500; color: var(--gray-700);
+}
+.balance-amount {
+  display: flex; align-items: flex-end; gap: 4px;
+  font-size: 42px; font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.balance-amount sup { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+.balance-amount .cents { font-size: 22px; font-weight: 700; color: var(--gray-600); margin-bottom: 3px; }
+
+.balance-actions { display: flex; gap: 12px; }
+.bal-btn {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 18px; border-radius: var(--radius-md);
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  border: 1px solid var(--gray-400); background: #fff; color: var(--gray-900);
+  transition: background .15s;
+}
+.bal-btn:hover { background: var(--gray-100); }
+.bal-btn.primary { background: var(--primary); color: #fff; border: none; }
+.bal-btn.primary:hover { background: var(--primary-light); }
+
+/* ===================== CASH FLOW CHART ===================== */
+.chart-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.chart-title { font-size: 15px; font-weight: 600; }
+.chart-tabs { display: flex; gap: 6px; }
+.chart-tab {
+  font-size: 12px; font-weight: 600; color: var(--gray-600);
+  padding: 6px 12px; border-radius: 8px; cursor: pointer;
+  border: none; background: transparent;
+}
+.chart-tab.active { color: var(--primary); background: var(--info-bg); }
+
+.chart-bars {
+  display: flex; align-items: flex-end; gap: 14px;
+  height: 160px; padding: 0 4px;
+}
+.chart-bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; }
+.chart-bar {
+  width: 100%; max-width: 36px; border-radius: 6px 6px 0 0;
+  display: flex; flex-direction: column; overflow: hidden;
+  transition: height .4s ease;
+}
+.chart-bar-segment.dark { background: var(--primary); }
+.chart-bar-segment.light { background: #cfe0fb; }
+
+.chart-days {
+  display: flex; justify-content: space-between; margin-top: 10px;
+  font-size: 12px; font-weight: 500; color: var(--gray-700);
+  padding: 0 4px;
+}
+.chart-day { flex: 1; text-align: center; }
+
+/* ===================== AI SNIPPET CARD ===================== */
+.ai-card {
+  display: flex; gap: 16px;
+  background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
+}
+.ai-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--info-bg); color: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+.ai-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.ai-text { font-size: 14px; color: var(--gray-700); line-height: 1.6; margin-bottom: 14px; }
+.ai-text .hl { color: var(--primary); font-weight: 700; }
+.ai-link { font-size: 14px; font-weight: 700; color: var(--primary); text-decoration: none; }
+.ai-link:hover { text-decoration: underline; }
+
+/* ===================== QUICK TRANSFER ===================== */
+.qt-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.qt-title { font-size: 15px; font-weight: 600; }
+.see-all { font-size: 13px; font-weight: 700; color: var(--primary); cursor: pointer; }
+.see-all:hover { text-decoration: underline; }
+
+.contact-row { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 4px; }
+.contact-item { display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0; cursor: pointer; }
+.c-add, .c-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 14px; color: #fff;
+}
+.c-add { background: #fff; border: 2px dashed var(--gray-400); color: var(--gray-600); font-size: 20px; }
+.c-name { font-size: 12px; font-weight: 600; color: var(--gray-700); }
+
+/* ===================== RECENT ACTIVITY ===================== */
+.activity-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.activity-title { font-size: 16px; font-weight: 600; }
+.filter-icon-btn {
+  width: 32px; height: 32px; border-radius: 8px;
+  border: 1px solid var(--gray-300); background: #fff;
+  cursor: pointer; font-size: 14px; color: var(--gray-600);
+}
+
+.txn-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 0; border-bottom: 1px solid rgba(194,198,214,0.25);
+}
+.txn-row:last-child { border-bottom: none; }
+.txn-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.txn-info { flex: 1; min-width: 0; }
+.txn-name { font-size: 14px; font-weight: 600; }
+.txn-meta { font-size: 12px; color: var(--gray-600); margin-top: 2px; }
+.txn-amount { font-size: 14px; font-weight: 700; flex-shrink: 0; }
+.txn-amount.neg { color: var(--gray-900); }
+.txn-amount.pos { color: var(--success); }

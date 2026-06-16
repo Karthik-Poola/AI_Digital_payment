@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexPay – Secure AI Finance</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="landing-nav">
+  <a class="nav-logo">
+    <div class="logo-icon">🏦</div>
+    <span class="nav-logo-text">ApexPay</span>
+  </a>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#stats">Security</a>
+    <a href="#cta">Enterprise</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn btn-outline" onclick="window.location.href='login.html'">Login</button>
+    <button class="btn btn-primary" onclick="window.location.href='register.html'">Sign Up</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">🛡️ Enterprise Grade Security Engine 2.0</div>
+    <h1 class="hero-title">Secure <span>AI-Powered</span> Finance</h1>
+    <p class="hero-desc">Experience the frictionless speed of modern fintech backed by an unwavering financial fortress. Uncover smart insights, block fraud instantly, and transfer globally.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary btn-lg" onclick="window.location.href='register.html'">Get Started →</button>
+      <button class="btn btn-outline btn-lg" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Explore Features</button>
+    </div>
+  </div>
+  <div class="hero-mockup">
+    <div class="mock-top">
+      <div>
+        <div class="mock-label">Total Balance</div>
+        <div class="mock-balance">$24,592.00</div>
+      </div>
+      <div class="mock-up-tag">+2.4%</div>
+    </div>
+    <div class="mock-chart">
+      <div class="mock-bar" style="height:0%" data-h="40%"></div>
+      <div class="mock-bar" style="height:0%" data-h="70%"></div>
+      <div class="mock-bar hi" style="height:0%" data-h="50%"></div>
+      <div class="mock-bar hi" style="height:0%" data-h="85%"></div>
+      <div class="mock-bar hi" style="height:0%" data-h="95%"></div>
+      <div class="mock-bar" style="height:0%" data-h="65%"></div>
+      <div class="mock-bar" style="height:0%" data-h="75%"></div>
+    </div>
+    <div class="mock-alert">
+      <div class="mock-alert-title">🤖 Fraud Blocked</div>
+      <div class="mock-alert-text">High Risk transaction intercepted — CryptoExchange Ltd. blocked automatically.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <div class="section-eyebrow">Engineered for Precision</div>
+  <h2 class="section-title">Built for the Modern Financial World</h2>
+  <p class="section-sub">Our proprietary machine learning models work invisibly to secure and accelerate every transaction you make.</p>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon-wrap blue">⚡</div>
+      <div class="feat-title">Instant Transfers</div>
+      <div class="feat-desc">Move capital globally without the wait. Our optimized routing network ensures your funds settle in milliseconds, no business days required.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-wrap green">🛡️</div>
+      <div class="feat-title">AI Fraud Detection</div>
+      <div class="feat-desc">Our Random Forest model analyzes over 500 signals per transaction, identifying suspicious patterns and anomalies before they reach your account.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-wrap orange">✨</div>
+      <div class="feat-title">Smart Spending Insights</div>
+      <div class="feat-desc">Our Generative AI acts as your personal financial analyst, categorizing expenses and providing natural-language summaries of your cash flow trends.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section" id="stats">
+  <div class="stats-grid">
+    <div>
+      <div class="stat-num" data-count="50000" data-prefix="" data-suffix="+">0</div>
+      <div class="stat-label">Active Users</div>
+    </div>
+    <div>
+      <div class="stat-num" data-count="99.9" data-suffix="%" data-prefix="">0</div>
+      <div class="stat-label">Uptime SLA</div>
+    </div>
+    <div>
+      <div class="stat-num" data-count="2500000" data-prefix="$" data-suffix="">0</div>
+      <div class="stat-label">Fraud Blocked</div>
+    </div>
+    <div>
+      <div class="stat-num" data-count="256" data-suffix="-bit" data-prefix="AES ">0</div>
+      <div class="stat-label">Encryption</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <h2>Ready to upgrade your finance?</h2>
+  <p>Join thousands of professionals who demand precision, speed, and absolute security from their financial platform.</p>
+  <button class="btn btn-white btn-lg" onclick="window.location.href='register.html'">Create Free Account →</button>
+</section>
+
+<!-- FOOTER -->
+<footer class="landing-footer">
+  <div class="footer-logo">
+    <div class="logo-icon">🏦</div>
+    ApexPay
+  </div>
+  <div class="footer-copy">© 2024 ApexPay Inc. — Secure AI Finance</div>
+</footer>
+
+<script src="js/global.js"></script>
+<script src="js/landing.js"></script>
+<script>
+  // Animate mock bars after load
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.mock-bar[data-h]').forEach((bar, i) => {
+      bar.style.transition = `height .7s ease ${i * 0.1}s`;
+      setTimeout(() => bar.style.height = bar.dataset.h, 300);
+    });
+  });
+</script>
+</body>
+</html>

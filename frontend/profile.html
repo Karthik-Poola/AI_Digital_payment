@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexPay – Profile</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">🏦</div>
+      <div>
+        <span class="logo-name">ApexPay</span>
+        <span class="logo-sub">Secure AI Finance</span>
+      </div>
+    </div>
+    <nav class="nav-section">
+      <a class="nav-item" href="dashboard.html"><span class="nav-icon">⊞</span> Dashboard</a>
+      <a class="nav-item" href="transactions.html"><span class="nav-icon">📋</span> Transactions</a>
+      <a class="nav-item" href="transfer.html"><span class="nav-icon">↗</span> Transfer</a>
+      <a class="nav-item" href="insights.html"><span class="nav-icon">📈</span> Insights</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="nav-item active" href="profile.html"><span class="nav-icon">⚙️</span> Settings</a>
+      <a class="nav-item" href="#"><span class="nav-icon">💬</span> Support</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div></div>
+      <div class="topbar-right">
+        <div class="icon-btn" id="bellBtn">🔔<span class="notif-dot"></span></div>
+        <div class="icon-btn">❓</div>
+        <div class="avatar">A</div>
+      </div>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div>
+        <div class="page-title">Account Settings</div>
+        <div class="page-sub">Manage your profile, security, and preferences.</div>
+      </div>
+    </div>
+
+    <div class="profile-layout">
+
+      <!-- LEFT: Profile summary -->
+      <div class="card profile-summary">
+        <div class="profile-avatar" id="profileAvatar">A</div>
+        <div class="profile-name" id="profileName">—</div>
+        <div class="profile-role" id="profileRole">—</div>
+        <div class="profile-email" id="profileEmail">—</div>
+        <div class="profile-balance-row">
+          <span class="profile-balance-label">Current Balance</span>
+          <span class="profile-balance-value" id="profileBalance">$0.00</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: Forms -->
+      <div class="profile-forms">
+
+        <!-- Personal info -->
+        <div class="card">
+          <div class="profile-section-title">Personal Information</div>
+          <form id="profileForm">
+            <div class="form-group">
+              <label class="form-label" for="fullName">Full Name</label>
+              <div class="input-wrap">
+                <span class="input-icon">👤</span>
+                <input class="form-input" type="text" id="fullName" name="fullName">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <div class="input-wrap">
+                <span class="input-icon">✉️</span>
+                <input class="form-input" type="email" id="email" name="email" disabled>
+              </div>
+              <div class="form-hint">Email cannot be changed. Contact support if needed.</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number</label>
+              <div class="input-wrap">
+                <span class="input-icon">📱</span>
+                <input class="form-input" type="tel" id="phone" name="phone">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="roleTitle">Role / Title</label>
+              <div class="input-wrap">
+                <span class="input-icon">💼</span>
+                <input class="form-input" type="text" id="roleTitle" name="roleTitle">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="saveProfileBtn">Save Changes</button>
+            <span class="save-status" id="profileSaveStatus"></span>
+          </form>
+        </div>
+
+        <!-- Security -->
+        <div class="card">
+          <div class="profile-section-title">Security</div>
+
+          <form id="passwordForm">
+            <div class="form-group">
+              <label class="form-label" for="currentPassword">Current Password</label>
+              <div class="input-wrap">
+                <span class="input-icon">🔒</span>
+                <input class="form-input" type="password" id="currentPassword" name="currentPassword" placeholder="••••••••">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="newPassword">New Password</label>
+              <div class="input-wrap">
+                <span class="input-icon">🔑</span>
+                <input class="form-input" type="password" id="newPassword" name="newPassword" placeholder="••••••••">
+              </div>
+              <div class="form-hint">Must be at least 8 characters.</div>
+            </div>
+            <div class="field-error" id="passwordErr"></div>
+            <button type="submit" class="btn btn-outline" id="changePasswordBtn">Change Password</button>
+            <span class="save-status" id="passwordSaveStatus"></span>
+          </form>
+
+          <div class="biometric-row">
+            <div>
+              <div class="biometric-title">Passkey / Biometric Login</div>
+              <div class="biometric-sub">Allow signing in with a fingerprint or device passkey.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="biometricToggle">
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Danger zone -->
+        <div class="card danger-card">
+          <div class="profile-section-title">Log Out</div>
+          <p class="danger-desc">Sign out of ApexPay on this device.</p>
+          <button class="btn btn-outline" id="logoutBtnProfile">🚪 Log Out</button>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/global.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

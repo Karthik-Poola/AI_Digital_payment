@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexPay – Transfer Funds</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/transfer.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">🏦</div>
+      <div>
+        <span class="logo-name">ApexPay</span>
+        <span class="logo-sub">Secure AI Finance</span>
+      </div>
+    </div>
+    <nav class="nav-section">
+      <a class="nav-item" href="dashboard.html"><span class="nav-icon">⊞</span> Dashboard</a>
+      <a class="nav-item" href="transactions.html"><span class="nav-icon">📋</span> Transactions</a>
+      <a class="nav-item active" href="transfer.html"><span class="nav-icon">↗</span> Transfer</a>
+      <a class="nav-item" href="insights.html"><span class="nav-icon">📈</span> Insights</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="nav-item" href="#"><span class="nav-icon">⚙️</span> Settings</a>
+      <a class="nav-item" href="#"><span class="nav-icon">💬</span> Support</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-search">
+        <span>🔍</span>
+        <input type="text" placeholder="Search transactions...">
+      </div>
+      <div class="topbar-right">
+        <div class="icon-btn" id="bellBtn">🔔</div>
+        <div class="icon-btn">❓</div>
+        <div class="avatar">A</div>
+      </div>
+    </div>
+
+    <div class="transfer-center">
+      <div class="transfer-card">
+
+        <!-- CARD HEADER -->
+        <div class="tf-header">
+          <div>
+            <div class="tf-title">Transfer Funds</div>
+            <div class="tf-sub">Secure, instant transfers across the Apex network.</div>
+          </div>
+          <div class="tf-lock">🔒</div>
+        </div>
+
+        <!-- STEPPER -->
+        <div class="stepper">
+          <div class="step">
+            <div class="step-num done">1</div>
+            <div class="step-label active">Recipient</div>
+          </div>
+          <div class="step-line"></div>
+          <div class="step">
+            <div class="step-num pending">2</div>
+            <div class="step-label pending">Amount</div>
+          </div>
+          <div class="step-line"></div>
+          <div class="step">
+            <div class="step-num pending">3</div>
+            <div class="step-label pending">Confirm</div>
+          </div>
+        </div>
+
+        <!-- STEP 1: RECIPIENT -->
+        <div class="step-panel active" id="step1">
+          <div class="tf-label">Recipient Details</div>
+          <div class="tf-input-wrap">
+            <span class="tf-input-icon">@</span>
+            <input class="tf-input" type="text" id="recipientInput" placeholder="Email, Phone, or Apex ID">
+          </div>
+          <div class="field-error" id="recipientErr"></div>
+
+          <div class="contacts-label">Recent Contacts</div>
+          <div class="contacts-row">
+            <div class="contact-chip" data-name="Sarah J." data-email="sarah.j@email.com">
+              <div class="chip-av" style="background:#8b5cf6">SJ</div>
+              <div class="chip-name">Sarah J.</div>
+            </div>
+            <div class="contact-chip" data-name="Tech Corp" data-email="billing@techcorp.com">
+              <div class="chip-av" style="background:#374151">🏢</div>
+              <div class="chip-name">Tech Corp</div>
+            </div>
+            <div class="contact-chip" data-name="Vendor A" data-email="payments@vendora.com">
+              <div class="chip-av" style="background:#d97706">🏪</div>
+              <div class="chip-name">Vendor A</div>
+            </div>
+            <div class="contact-chip" data-name="Michael" data-email="michael@email.com">
+              <div class="chip-av" style="background:#0891b2">M</div>
+              <div class="chip-name">Michael</div>
+            </div>
+          </div>
+
+          <button class="tf-continue" id="step1Btn">Continue →</button>
+          <div class="tf-secure-note">🛡️ End-to-end encrypted by Apex Fortress Security</div>
+        </div>
+
+        <!-- STEP 2: AMOUNT -->
+        <div class="step-panel" id="step2" style="display:none">
+          <div class="tf-label">Transfer Amount</div>
+          <div class="tf-input-wrap">
+            <span class="tf-input-icon">$</span>
+            <input class="tf-input" type="number" id="amountInput" placeholder="0.00" min="1" max="50000">
+          </div>
+          <div class="field-error" id="amountErr"></div>
+
+          <div class="quick-amounts">
+            <button class="quick-amount" data-val="50">$50</button>
+            <button class="quick-amount" data-val="100">$100</button>
+            <button class="quick-amount" data-val="250">$250</button>
+            <button class="quick-amount" data-val="500">$500</button>
+          </div>
+
+          <div class="amount-preview">
+            <div class="amount-preview-label">You're sending</div>
+            <div class="amount-preview-value" id="amountPreview">$0.00</div>
+          </div>
+
+          <div class="form-group" style="margin-top:14px;">
+            <div class="tf-label">Note (optional)</div>
+            <div class="tf-input-wrap">
+              <span class="tf-input-icon">📝</span>
+              <input class="tf-input" type="text" id="noteInput" placeholder="Add a message...">
+            </div>
+          </div>
+
+          <!-- Fraud check bar -->
+          <div class="fraud-check-bar" id="fraudBar" style="display:none;">
+            <div class="fraud-spinner"></div>
+            <span class="fraud-status">Checking...</span>
+          </div>
+
+          <button class="tf-continue" id="step2Btn">Continue →</button>
+          <button class="tf-back" id="step2Back">← Back</button>
+          <div class="tf-secure-note">🛡️ End-to-end encrypted by Apex Fortress Security</div>
+        </div>
+
+        <!-- STEP 3: CONFIRM -->
+        <div class="step-panel" id="step3" style="display:none">
+          <div class="tf-label">Confirm Transfer</div>
+          <div class="confirm-summary">
+            <div class="summary-row">
+              <span class="summary-label">To</span>
+              <span class="summary-value" id="sumRecipient">—</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Amount</span>
+              <span class="summary-value" id="sumAmount">—</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Note</span>
+              <span class="summary-value" id="sumNote">—</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Transfer Fee</span>
+              <span class="summary-value pos" id="sumFee">Free</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Total Deducted</span>
+              <span class="summary-value" id="sumTotal">—</span>
+            </div>
+          </div>
+
+          <button class="tf-continue" id="step3Btn">Confirm & Send →</button>
+          <button class="tf-back" id="step3Back">← Back</button>
+          <div class="tf-secure-note">🛡️ Funds will be debited from your ApexPay wallet instantly.</div>
+        </div>
+
+        <!-- SUCCESS -->
+        <div class="success-panel" id="stepsuccess" style="display:none; flex-direction:column; align-items:center; text-align:center; padding:20px 0;">
+          <div class="success-icon">✅</div>
+          <div class="success-title">Transfer Sent!</div>
+          <div class="success-sub">Your funds have been transferred successfully and will arrive instantly.</div>
+          <div class="success-actions">
+            <button class="btn btn-primary btn-block btn-lg" id="backDashBtn">Back to Dashboard</button>
+            <button class="btn btn-outline btn-block" id="newTransferBtn">New Transfer</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/global.js"></script>
+<script src="js/transfer.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+/* =========================================================
+   ApexPay - css/insights.css
+   ========================================================= */
+
+.insights-heading { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+.insights-sub { font-size: 14px; color: var(--gray-700); margin-bottom: 20px; }
+
+.insights-layout {
+  display: grid; grid-template-columns: 1.6fr 1fr; gap: 18px;
+}
+.insights-left, .insights-right { display: flex; flex-direction: column; gap: 18px; }
+
+/* ===================== AI ANALYSIS CARD ===================== */
+.ai-analysis-card {
+  background: linear-gradient(135deg, var(--gray-100) 0%, #f9f9ff 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(194,198,214,0.3);
+  box-shadow: var(--shadow-card);
+  padding: 22px;
+}
+.ai-analysis-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.ai-analysis-icon {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--info-bg); color: var(--primary);
+  display: flex; align-items: center; justify-content: center; font-size: 20px;
+}
+.ai-analysis-title { font-size: 18px; font-weight: 700; }
+.new-badge {
+  background: var(--primary); color: #fff;
+  font-size: 11px; font-weight: 700; padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+.ai-analysis-body { font-size: 15px; line-height: 1.7; transition: opacity .2s; }
+.ai-analysis-body .neg { color: var(--danger); font-weight: 700; }
+.ai-analysis-body .pos { color: var(--primary); font-weight: 700; }
+
+.ai-review-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 18px; border-radius: var(--radius-md);
+  font-size: 13px; font-weight: 700;
+  background: #fff; border: 1px solid rgba(0,88,190,0.3); color: var(--primary);
+  cursor: pointer; transition: background .15s;
+}
+.ai-review-btn:hover { background: var(--gray-100); }
+.ai-review-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ===================== CATEGORY BREAKDOWN ===================== */
+.breakdown-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+.breakdown-title { font-size: 18px; font-weight: 700; }
+.see-all { font-size: 13px; font-weight: 700; color: var(--primary); cursor: pointer; }
+.see-all:hover { text-decoration: underline; }
+
+.donut-layout { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+.donut-wrap {
+  position: relative; width: 200px; height: 200px; border-radius: 50%;
+  background: conic-gradient(#2563eb 0% 45%, #1e293b 45% 75%, #d97706 75% 90%, #e2e8f0 90% 100%);
+  flex-shrink: 0;
+  transition: background 0.4s ease;
+}
+.donut-wrap::before {
+  content: ""; position: absolute; inset: 28px;
+  background: #fff; border-radius: 50%;
+}
+.donut-inner {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 1;
+}
+.donut-label { font-size: 13px; color: var(--gray-600); }
+.donut-val { font-size: 24px; font-weight: 700; }
+
+.legend { flex: 1; min-width: 200px; }
+.legend-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; }
+.legend-left { display: flex; align-items: center; font-size: 14px; font-weight: 500; }
+.legend-dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 10px; }
+.legend-pct { font-size: 14px; font-weight: 700; color: var(--gray-700); }
+
+/* ===================== ACTIVE GOAL ===================== */
+.goal-head { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.goal-head-icon { font-size: 20px; }
+.goal-head-title { font-size: 16px; font-weight: 700; }
+.goal-name { font-size: 14px; font-weight: 600; color: var(--gray-700); margin-bottom: 2px; }
+.goal-target-txt { font-size: 12px; color: var(--gray-600); margin-bottom: 14px; }
+.goal-amount { font-size: 28px; font-weight: 700; display: inline-block; }
+.goal-of-txt { font-size: 14px; color: var(--gray-600); display: inline-block; margin-left: 6px; }
+
+.progress-bar {
+  width: 100%; height: 8px; background: var(--gray-300);
+  border-radius: var(--radius-full); overflow: hidden; margin-top: 10px;
+}
+.progress-fill {
+  height: 100%; background: var(--primary); border-radius: var(--radius-full);
+  width: 0%; transition: width 0.8s ease;
+}
+.goal-status {
+  display: flex; align-items: center; gap: 6px; margin-top: 14px;
+  font-size: 13px; font-weight: 600; color: var(--success);
+}
+
+/* ===================== SMART TIPS ===================== */
+.tips-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.tips-head-icon { font-size: 20px; }
+.tips-head-title { font-size: 18px; font-weight: 700; }
+
+.tip-item {
+  display: flex; gap: 14px; padding: 16px 0;
+  border-bottom: 1px solid rgba(194,198,214,0.3);
+}
+.tip-item:last-child { border-bottom: none; }
+.tip-bullet {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.tip-bullet.yellow { background: var(--warning-bg); }
+.tip-bullet.blue { background: var(--info-bg); }
+.tip-bullet.green { background: var(--success-bg); }
+
+.tip-content-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.tip-content-text { font-size: 13px; color: var(--gray-600); line-height: 1.5; }
+
+@media (max-width: 1024px) {
+  .insights-layout { grid-template-columns: 1fr; }
+}
