@@ -41,8 +41,8 @@ def lookup_recipient():
     """
     GET /api/transfer/lookup?identifier=jane@company.com
 
-    Resolves an email/phone/Apex ID to a recipient.
-    - If it matches an existing ApexPay user, returns their public profile.
+    Resolves an email/phone/SecurePay ID to a recipient.
+    - If it matches an existing SecurePay user, returns their public profile.
     - If it matches a saved contact, returns that contact.
     - Otherwise returns a generic "external" recipient shape so the
       frontend can still proceed with a free-text recipient.
@@ -58,7 +58,7 @@ def lookup_recipient():
     if contact:
         return jsonify({"recipient": contact.to_dict(), "type": "contact"}), 200
 
-    # 2. Existing ApexPay user (by email or phone)
+    # 2. Existing SecurePay user (by email or phone)
     target_user = User.query.filter(
         (User.email == identifier) | (User.phone == identifier)
     ).first()
@@ -295,7 +295,7 @@ def execute_transfer():
         user.balance_cents -= amount_cents
         _bump_cashflow(user_id, outflow_cents=amount_cents)
 
-        # Credit recipient if internal ApexPay user
+        # Credit recipient if internal SecurePay user
         if is_internal:
             recipient_user = User.query.get(recipient_user_id)
             if recipient_user:

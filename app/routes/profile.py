@@ -3,6 +3,11 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 
 from app.extensions import db
 from app.models import User, Account
+from app.utils.region import (
+    REGION_CURRENCY_MAP,
+    get_currency_for_region,
+    get_region_name,
+)
 
 profile_bp = Blueprint("profile", __name__, url_prefix="/api/profile")
 
@@ -85,3 +90,65 @@ def toggle_biometric():
     db.session.commit()
 
     return jsonify({"biometricEnabled": user.biometric_enabled}), 200
+
+
+@profile_bp.route("/regions", methods=["GET"])
+def get_available_regions():
+    """Get list of available regions and their default currencies."""
+    regions = []
+    for code, info in REGION_CURRENCY_MAP.items():
+        regions.append({
+            "code": code,
+            "name": info["name"],
+            "currency": info["currency"],
+            "symbol": info["symbol"],
+        })
+    return jsonify({"regions": sorted(regions, key=lambda x: x["name"])}), 200
+
+
+@profile_bp.route("/region", methods=["GET"])
+@jwt_required()
+def get_user_region():
+    """Get current user's region and currency settings."""
+    user_id = get_jwt_identity()
+    user = User.query.get_or_404(user_id)
+    
+    region_info = REGION_CURRENCY_MAP.get(user.region, {})
+    return jsonify({
+        "region": user.region,
+        "regionName": get_region_name(user.region),
+        "currency": user.currency,
+        "symbol": region_info.get("symbol", user.currency),
+    }), 200
+
+
+@profile_bp.route("/region", methods=["PUT"])
+@jwt_required()
+def update_user_region():
+    """Update user's region and associated currency."""
+    user_id = get_jwt_identity()
+    user = User.query.get_or_404(user_id)
+    data = request.get_json(silent=True) or {}
+    
+    new_region = (data.get("region") or "").upper().strip()
+    
+    if not new_region or new_region not in REGION_CURRENCY_MAP:
+        return jsonify({"error": "Invalid region code"}), 400
+    
+    user.region = new_region
+    user.currency = get_currency_for_region(new_region)
+    
+    # Update all accounts to the new currency as well
+    accounts = Account.query.filter_by(user_id=user_id).all()
+    for account in accounts:
+        account.currency = user.currency
+    
+    db.session.commit()
+    
+    region_info = REGION_CURRENCY_MAP.get(user.region, {})
+    return jsonify({
+        "region": user.region,
+        "regionName": get_region_name(user.region),
+        "currency": user.currency,
+        "symbol": region_info.get("symbol", user.currency),
+    }), 200

@@ -1,4 +1,4 @@
-# ApexPay — Full Stack (Flask + MySQL + Frontend)
+# SecurePay — Full Stack (Flask + MySQL + Frontend)
 
 A complete fintech demo app: HTML/CSS/JS frontend, Flask REST API,
 MySQL database, a pluggable fraud-detection ML model, and Gemini-powered
@@ -7,7 +7,7 @@ MySQL database, a pluggable fraud-detection ML model, and Gemini-powered
 ## 1. Setup
 
 ```bash
-cd apexpay_backend
+cd securepay_backend
 python3 -m venv venv
 source venv/bin/activate          # Windows: venv\Scripts\activate
 pip install -r requirements.txt
@@ -16,7 +16,7 @@ pip install -r requirements.txt
 Create your MySQL database:
 
 ```sql
-CREATE DATABASE apexpay CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE securepay CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
 Copy `.env.example` to `.env` and fill in your credentials:

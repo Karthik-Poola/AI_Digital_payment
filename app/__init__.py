@@ -56,7 +56,7 @@ def create_app(config_class=Config):
         return jsonify(
             {
                 "status": "ok",
-                "service": "apexpay-backend",
+                "service": "securepay-backend",
                 "fraudModel": get_model_status(),
             }
         ), 200

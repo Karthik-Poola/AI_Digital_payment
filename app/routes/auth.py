@@ -9,6 +9,7 @@ from flask_jwt_extended import (
 
 from app.extensions import db
 from app.models import User, Account, Goal, Insight, SmartTip, CategorySpend, CashFlowDaily
+from app.utils.region import detect_region_from_request, get_currency_for_region
 
 auth_bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 
@@ -94,12 +95,18 @@ def register():
     parts = full_name.split()
     initials = (parts[0][0] + parts[-1][0]).upper() if len(parts) > 1 else full_name[:2].upper()
 
+    # Detect user's region from request
+    detected_region = detect_region_from_request()
+    detected_currency = get_currency_for_region(detected_region)
+
     user = User(
         full_name=full_name,
         email=email,
         phone=phone or None,
         avatar_initials=initials,
         balance_cents=24_592_00,  # demo starting balance, matches frontend mock
+        region=detected_region,
+        currency=detected_currency,
     )
     user.set_password(password)
 

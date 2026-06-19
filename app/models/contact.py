@@ -14,7 +14,7 @@ class Contact(db.Model):
     user_id = db.Column(db.String(36), db.ForeignKey("users.id"), nullable=False, index=True)
 
     name = db.Column(db.String(120), nullable=False)
-    identifier = db.Column(db.String(150), nullable=False)  # email / phone / apex id
+    identifier = db.Column(db.String(150), nullable=False)  # email / phone / securepay id
     initials = db.Column(db.String(4), default="??")
     avatar_color_bg = db.Column(db.String(20), default="#d5e0f8")
     avatar_color_fg = db.Column(db.String(20), default="#0058be")

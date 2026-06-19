@@ -7,7 +7,7 @@ Usage:
 This will:
   1. Create all tables (db.create_all()) -- run `flask db upgrade`
      instead if you're using migrations in production.
-  2. Create a demo user (demo@apexpay.io / Password123!) with data
+  2. Create a demo user (demo@securepay.io / Password123!) with data
      matching the frontend mockups: balance, transactions, cash flow,
      contacts, goals, insights, smart tips, and category breakdown.
 """
@@ -39,6 +39,7 @@ from app.models.transaction import (
     FRAUD_SUSPICIOUS,
     FRAUD_HIGH_RISK_BLOCKED,
 )
+from app.utils.region import get_currency_for_region
 
 app = create_app()
 
@@ -47,21 +48,28 @@ def seed():
     with app.app_context():
         db.create_all()
 
-        if User.query.filter_by(email="demo@apexpay.io").first():
+        if User.query.filter_by(email="demo@securepay.io").first():
             print("Demo user already exists. Skipping seed.")
             return
 
         # ---------------------------------------------------
         # User
         # ---------------------------------------------------
+        # Use default region/currency for demo (US/USD)
+        # In production, this would be detected from the request
+        demo_region = "US"
+        demo_currency = get_currency_for_region(demo_region)
+        
         user = User(
             full_name="Alex Carter",
-            email="demo@apexpay.io",
+            email="demo@securepay.io",
             phone="+1 (555) 123-4567",
             avatar_initials="AC",
             role_title="Enterprise Member",
             balance_cents=24_592_00,
             biometric_enabled=True,
+            region=demo_region,
+            currency=demo_currency,
         )
         user.set_password("Password123!")
         db.session.add(user)
@@ -76,6 +84,7 @@ def seed():
                 account_name="Primary Checking",
                 account_type="checking",
                 balance_cents=user.balance_cents,
+                currency=demo_currency,
                 is_primary=True,
             )
         )
@@ -84,12 +93,12 @@ def seed():
         # Contacts (Quick Transfer + Transfer recent contacts)
         # ---------------------------------------------------
         contacts_data = [
-            ("Sarah J.", "sarah.j@apex.io", "SJ", "#d5e0f8", "#0058be", None, False),
+            ("Sarah J.", "sarah.j@secure.io", "SJ", "#d5e0f8", "#0058be", None, False),
             ("Tech Corp", "billing@techcorp.com", "TC", "#1f2937", "#ffffff", "business", True),
-            ("Vendor A", "vendora@apex.io", "VA", "#fde9d7", "#92400e", None, False),
-            ("Michael R.", "michael.r@apex.io", "MR", "#545f73", "#ffffff", None, False),
-            ("Emma J.", "emma.j@apex.io", "EJ", "#d5e0f8", "#0058be", None, False),
-            ("David K.", "david.k@apex.io", "DK", "#2e3038", "#ffffff", None, False),
+            ("Vendor A", "vendora@secure.io", "VA", "#fde9d7", "#92400e", None, False),
+            ("Michael R.", "michael.r@secure.io", "MR", "#545f73", "#ffffff", None, False),
+            ("Emma J.", "emma.j@secure.io", "EJ", "#d5e0f8", "#0058be", None, False),
+            ("David K.", "david.k@secure.io", "DK", "#2e3038", "#ffffff", None, False),
         ]
         now = datetime.utcnow()
         for i, (name, identifier, initials, bg, fg, icon, is_company) in enumerate(contacts_data):
@@ -211,7 +220,7 @@ def seed():
         ]
 
         for tx in transactions_data:
-            db.session.add(Transaction(user_id=user.id, **tx))
+            db.session.add(Transaction(user_id=user.id, currency=demo_currency, **tx))
 
         # ---------------------------------------------------
         # Cash flow (last 7 days) - matches dashboard bar chart
@@ -342,7 +351,7 @@ def seed():
 
         db.session.commit()
         print("Seed complete!")
-        print("  Email:    demo@apexpay.io")
+        print("  Email:    demo@securepay.io")
         print("  Password: Password123!")
 
 

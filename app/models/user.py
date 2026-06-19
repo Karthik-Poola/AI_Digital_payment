@@ -24,6 +24,9 @@ class User(db.Model):
     # Account balances (kept in cents to avoid float issues)
     balance_cents = db.Column(db.BigInteger, default=0, nullable=False)
     currency = db.Column(db.String(3), default="USD")
+    
+    # Region for localization
+    region = db.Column(db.String(2), default="US")  # ISO 3166-1 alpha-2 country code
 
     # Security / status
     is_active = db.Column(db.Boolean, default=True)
@@ -74,6 +77,7 @@ class User(db.Model):
             "avatarInitials": self.avatar_initials,
             "roleTitle": self.role_title,
             "currency": self.currency,
+            "region": self.region,
             "biometricEnabled": self.biometric_enabled,
             "createdAt": self.created_at.isoformat() if self.created_at else None,
         }
